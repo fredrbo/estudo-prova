@@ -1,5 +1,8 @@
 import { useState } from "react"
-import pessoaService from "../services/pessoa";
+import { Button } from "../../components/botao";
+import { Card } from "../../components/card";
+import { Input } from "../../components/input/intex";
+import pessoaService from "../../services/pessoa";
 export function Main() {
 
     const [firstName, setFirstName] = useState('frederico');
@@ -20,12 +23,13 @@ export function Main() {
 
     return (
         <>
+        <Card>
             <div>
-                <input
+                <Input
                     placeholder="Primeiro nome"
                     type="text"
                     onChange={handleNome} />
-                <button onClick={getInfoByName}>obter</button>
+                <Button onClick={getInfoByName}>obter</Button>
             </div>
             {res.length > 0 &&
                 <div>
@@ -42,6 +46,7 @@ export function Main() {
                     })}
                 </div>
             }
+            </Card>
         </>
     )
 }
