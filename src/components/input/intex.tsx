@@ -1,5 +1,16 @@
+import { InputHTMLAttributes } from "react";
 import { InputSld } from "./styles";
 
-export function Input({children} : any){
-    return <InputSld>{children}</InputSld>
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+    width?: string;
+    height?: string;
+    value: string;
+    type?: string;
+  };
+  
+
+export function Input({value, onChange, placeholder, ...rest} : InputProps){
+    return (
+    <InputSld value={value}  onChange={onChange} placeholder={placeholder} type="text" />
+    )
 }

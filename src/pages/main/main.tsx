@@ -2,10 +2,11 @@ import { useState } from "react"
 import { Button } from "../../components/botao";
 import { Card } from "../../components/card";
 import { Input } from "../../components/input/intex";
+import { Text } from "../../components/text";
 import pessoaService from "../../services/pessoa";
 export function Main() {
 
-    const [firstName, setFirstName] = useState('frederico');
+    const [firstName, setFirstName] = useState('');
     const [res, setRes] = useState([]);
     const [name, setName] = useState('');
 
@@ -17,30 +18,27 @@ export function Main() {
         }
     }
 
-    const handleNome = (event: any) => {
-        setFirstName(event.target.value);
-    };
-
     return (
         <>
         <Card>
             <div>
                 <Input
+                    value={firstName}
                     placeholder="Primeiro nome"
                     type="text"
-                    onChange={handleNome} />
-                <Button onClick={getInfoByName}>obter</Button>
+                    onChange={(e) => setFirstName(e.target.value)} />
+                <Button onClick={getInfoByName} text="Obter"></Button>
             </div>
             {res.length > 0 &&
                 <div>
-                    <span>
-                        Nome: {name}
-                    </span>
+                    <Text>
+                    Nome: {name}
+                    </Text>
 
                     {res.map(function (res: any, i) {
                         return (
                             <div key={i}>
-                                <span >{res.periodo}: {res.frequencia}</span>
+                                <Text >{res.periodo}: {res.frequencia}</Text>
                             </div>
                         )
                     })}

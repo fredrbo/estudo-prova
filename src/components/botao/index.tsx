@@ -1,5 +1,11 @@
+import { ButtonHTMLAttributes } from "react";
 import { ButtonSld } from "./styles";
 
-export function Button({children} : any){
-    return <ButtonSld>{children}</ButtonSld>
+type ButtonProps = ButtonHTMLAttributes<HTMLInputElement> & {
+    onClick?: any;
+    text?: string;
+};
+
+export function Button({text, onClick , ...rest }: ButtonProps) {
+    return <ButtonSld onClick={onClick} >{text}</ButtonSld>
 }
